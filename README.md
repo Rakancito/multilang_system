@@ -4,16 +4,17 @@ Multi Language System
 
 - Instructions:
 
-Installation:
+# Installation:
 
-# Just Search in all Archives the DEFINES
+Just Search in all Archives the DEFINES and place things as I have arranged.
 
-ENABLE_MULTILANGUAGE
+DEFINES: 
 
-# and place things as I have arranged.
+- ENABLE_MULTILANGUAGE
 
+# Modifications for add or remove countrys:
 
-- If you want add or remove a country you need:
+If you want add or remove a country you need:
 
 Search in Client PythonApplicationModule.cpp and InstanceBaseEffect.cpp :
 
