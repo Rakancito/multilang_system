@@ -1207,6 +1207,7 @@ PyObject* appLogoClose(PyObject* poSelf, PyObject* poArgs)
 #ifdef ENABLE_MULTILANGUAGE
 PyObject* appGetMyLang(PyObject* poSelf, PyObject* poArgs)
 {
+	// FOR CHANGE COUNTRY
 	const char * cCountry = "es";
 	switch (LocaleService_GetMyLang())
 	{
@@ -1422,7 +1423,7 @@ void initapp()
 	PyModule_AddIntConstant(poModule, "VK_DELETE",	     VK_DELETE);
 
 	PyModule_AddIntConstant(poModule, "DIK_ESCAPE",      DIK_ESCAPE);
-	PyModule_AddIntConstant(poModule, "DIK_ESC",         DIK_ESCAPE);	// ∆Ì¿«∏¶ ¿ß«ÿ
+	PyModule_AddIntConstant(poModule, "DIK_ESC",         DIK_ESCAPE);	// Ìé∏ÏùòÎ•º ÏúÑÌï¥
 	PyModule_AddIntConstant(poModule, "DIK_1",           DIK_1);
 	PyModule_AddIntConstant(poModule, "DIK_2",           DIK_2);
 	PyModule_AddIntConstant(poModule, "DIK_3",           DIK_3);
