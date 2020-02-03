@@ -36,3 +36,7 @@ For a number greater than the number of languages you have, just remember, TRANS
 In your DB common.lang 
 
 Just remove or add the language, but remember, the order that you have in the database must match that of PythonApplicationModule and InstanceBaseEffect of the Client.
+
+# Note
+
+You just need to accommodate the translations of your server and client, in addition to adding a button to change language, I was already lazy to do so.
