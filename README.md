@@ -40,3 +40,5 @@ Just remove or add the language, but remember, the order that you have in the da
 # Note
 
 You just need to accommodate the translations of your server and client, in addition to adding a button to change language, I was already lazy to do so.
+
+The system works fine, I have already tried it.
