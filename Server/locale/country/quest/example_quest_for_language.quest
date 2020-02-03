@@ -1,5 +1,7 @@
 -- If you want a quest in a some languages you can follow the example.
 
+-- before all chat you need a "if" you can order it as you like or use other logic.
+
 quest example_quest_for_language  begin
 	state start begin
 		when login or levelup with pc.level >= 30 begin
