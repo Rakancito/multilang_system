@@ -14,6 +14,8 @@ DEFINES:
 
 # Modifications for add or remove countrys:
 
+- For change DEFAULT LANGUAGE you need change in length.h DEFAULT_LANGUAGE = 1 for your number language or other.
+
 If you want add or remove a country you need:
 
 Search in Client PythonApplicationModule.cpp and InstanceBaseEffect.cpp :
