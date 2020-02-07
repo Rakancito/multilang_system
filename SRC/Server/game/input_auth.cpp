@@ -165,11 +165,12 @@ void CInputAuth::Login(LPDESC d, const char * c_pData)
 	char szLogin[LOGIN_MAX_LEN * 2 + 1];
 	DBManager::instance().EscapeString(szLogin, sizeof(szLogin), login, strlen(login));
 
-
+#ifdef ENABLE_MULTILANGUAGE //Fix Error Login
 	BYTE bLang;
 	bLang = pinfo->blang;
 	if (bLang >= 250)
 		bLang = 0;
+#endif
 	// CHANNEL_SERVICE_LOGIN
 	if (Login_IsInChannelService(szLogin))
 	{
