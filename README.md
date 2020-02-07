@@ -12,6 +12,25 @@ DEFINES:
 
 - ENABLE_MULTILANGUAGE
 
+If you like translate text you just change with Notepad++ or other all ChatPacket with a LC_TEXT  for TRANSLATE_LANGUAGE, if you like your default you just for DEFAULT_LANGUAGE.
+
+For example:
+	CHAT_TYPE_TALKING, LC_TEXT(TRANSLATE_LANGUAGE,
+	CHAT_TYPE_INFO, LC_TEXT(TRANSLATE_LANGUAGE,
+	CHAT_TYPE_NOTICE, LC_TEXT(TRANSLATE_LANGUAGE,
+	CHAT_TYPE_PARTY, LC_TEXT(TRANSLATE_LANGUAGE,
+	CHAT_TYPE_GUILD, LC_TEXT(TRANSLATE_LANGUAGE,		
+	CHAT_TYPE_SHOUT, LC_TEXT(TRANSLATE_LANGUAGE,	
+	CHAT_TYPE_WHISPER, LC_TEXT(TRANSLATE_LANGUAGE,
+	CHAT_TYPE_BIG_NOTICE, LC_TEXT(TRANSLATE_LANGUAGE,
+	CHAT_TYPE_MONARCH_NOTICE, LC_TEXT(TRANSLATE_LANGUAGE,
+	CHAT_TYPE_DICE_INFO, LC_TEXT(TRANSLATE_LANGUAGE,
+
+but not replace all please
+	CHAT_TYPE_COMMAND,
+	
+or if the CHAT have not a LC_TEXT, for the all cases i add parts in the code.
+
 # Modifications for add or remove countrys:
 
 - For change DEFAULT LANGUAGE you need change in length.h DEFAULT_LANGUAGE = 1 for your number language or other.
