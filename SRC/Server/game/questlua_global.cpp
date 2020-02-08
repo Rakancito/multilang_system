@@ -1613,11 +1613,11 @@ namespace quest
 
 		if (ch)
 		{
-			lua_tonumber(L, ch->GetLang());
+			lua_pushnumber(L, ch->GetLang());
 		}
 		else
 		{
-			lua_tonumber(L, 0);
+			lua_pushnumber(L, 0);
 		}
 
 		return 1;
