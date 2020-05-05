@@ -6,6 +6,8 @@ Multi Language System
 
 # Installation:
 
+You will need add https://metin2.dev/board/topic/20397-guideemoji-in-textline/ by xP3NG3Rx for IMG in Chat and Whisper, the all definitions for Chats with IMG Icons it's "Multilanguage with KingDom"
+
 Just Search in all Archives the DEFINES and place things as I have arranged.
 
 DEFINES: 
