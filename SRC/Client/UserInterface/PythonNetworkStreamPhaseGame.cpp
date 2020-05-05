@@ -28,6 +28,7 @@
 #include "InstanceBase.h"
 
 #include "ProcessCRC.h"
+#include <boost\algorithm\string\replace.hpp>
 
 BOOL gs_bEmpireLanuageEnable = TRUE;
 
@@ -1560,7 +1561,21 @@ bool CPythonNetworkStream::RecvWhisperPacket()
 		flashInfo.dwTimeout = 0;
 		FlashWindowEx(&flashInfo);
 #endif
-		_snprintf(line, sizeof(line), "%s : %s", whisperPacket.szNameFrom, buf);
+		std::string lang = "";
+		std::string message = buf;
+		const char text[21][21] = {
+			"language_locale/en", "language_locale/es", "language_locale/hu", "language_locale/ro", "language_locale/tur", "language_locale/de",
+		};
+		for (int i = 0; i < 5; i++)
+		{
+			if (strstr(message.c_str(), text[i]) != NULL)
+			{
+				boost::algorithm::replace_all(message, text[i], "");
+				lang = text[i];
+			}
+		}
+		_snprintf(line, sizeof(line), "%s %s : %s", lang.c_str(), whisperPacket.szNameFrom, message);
+		//_snprintf(line, sizeof(line), "%s %s : %s", lang, whisperPacket.szNameFrom, buf);
 		PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "OnRecvWhisper", Py_BuildValue("(iss)", (int) whisperPacket.bType, whisperPacket.szNameFrom, line));
 	}
 	else if (CPythonChat::WHISPER_TYPE_SYSTEM == whisperPacket.bType || CPythonChat::WHISPER_TYPE_ERROR == whisperPacket.bType)
