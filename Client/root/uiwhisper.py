@@ -303,7 +303,7 @@ class WhisperDialog(ui.ScriptWindow):
 			net.SendWhisperPacket(self.targetName, "language_"+app.GetMyLang() + text)
 			self.chatLine.SetText("")
             #MULTILANGUAGE Chat Kingdom
-			chat.AppendWhisper(chat.WHISPER_TYPE_CHAT, self.targetName,  "language_"+app.GetMyLang() + player.GetName() + " : " + text)
+			chat.AppendWhisper(chat.WHISPER_TYPE_CHAT, self.targetName,  "language_"+app.GetMyLang() + " " + player.GetName() + " : " + text)
             #chat.AppendWhisper(chat.WHISPER_TYPE_CHAT, self.targetName,  player.GetName() + " : " + text)
 
 	def OnTop(self):
