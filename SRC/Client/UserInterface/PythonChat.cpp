@@ -5,6 +5,7 @@
 #include "PythonCharacterManager.h"
 #include "../eterbase/Timer.h"
 #include "../GameLib/ItemManager.h"
+//Multilanguage with KingDom
 #include <boost\algorithm\string\replace.hpp>
 
 int CPythonChat::TChatSet::ms_iChatModeSize = CHAT_TYPE_MAX_NUM;
@@ -437,7 +438,7 @@ void CPythonChat::ArrangeShowingChat(DWORD dwID)
 		iHeight += pChatSet->m_iStep;
 	}
 }
-
+//Multilanguage with KingDom
 void CPythonChat::AppendChat(int iType, const char * c_szChat)
 {
 	// DEFAULT_FONT
@@ -454,37 +455,18 @@ void CPythonChat::AppendChat(int iType, const char * c_szChat)
 	IAbstractApplication& rApp=IAbstractApplication::GetSingleton();
 	SChatLine * pChatLine = SChatLine::New();
 	pChatLine->iType = iType;
-	std::string strContent = c_szChat;
-	const char text[300][300] = { ":**", "O:)", "~X(", "=D>", ">3", "X(", ";;)",
-		";))", "\:D/", ":^>", ">:/", "=((", ":-c", ":-@",
-		":O)", ":-/", ":((", ":D", "8->", ">:)", ":o3",
-		":-<", ":-$", "=P~", "(pow)", ":-L", ">:P", ";)",
-		"<3", ":!!", "@-)", "^#(^", ":*", ":))", ":^o",
-		":X", ":-SS", ":-B", "%-(", "[-(", "^:)^", ":-j",
-		":)]", "<:-P", ":P", ":ar!", "[-o<", "\m/", "8-/",
-		"=))", "@};-", ":(", "[-x", ":-&", ":-^", "8-}",
-		"/-)", ":)", ":>", ":/", "B-)", ":O", "=;",
-		":-?", ":-t", ":-w", ":-h", 
+	std::string szChat = c_szChat;
+	const char text[30][30] = { 
 		"EnTranslate", "EsTranslate", "HuTranslate", "RoTranslate", "TurTranslate", "GerTranslate", 
 	};
-	const char emoji[300][300] = { "|Eemoji/yahoo/2love|e", "|Eemoji/yahoo/angel|e", "|Eemoji/yahoo/at-wits-end|e", "|Eemoji/yahoo/applause|e", "|Eemoji/yahoo/arrow|e", "|Eemoji/yahoo/angry-or-grumpy|e", "|Eemoji/yahoo/batting-eyelashes|e",
-		"|Eemoji/yahoo/giggle-or-hee-hee|e", "|Eemoji/yahoo/dancing|e", "|Eemoji/yahoo/blushing|e", "|Eemoji/yahoo/bring-it-on|e", "|Eemoji/yahoo/broken-heart|e", "|Eemoji/yahoo/call-me|e", "|Eemoji/yahoo/chatterbox|e",
-		"|Eemoji/yahoo/clown|e", "|Eemoji/yahoo/confused|e", "|Eemoji/yahoo/crying|e", "|Eemoji/yahoo/big-grin|e", "|Eemoji/yahoo/daydreaming|e", "|Eemoji/yahoo/devil|e", "|Eemoji/yahoo/dog|e",
-		"|Eemoji/yahoo/doh!|e", "|Eemoji/yahoo/do-not-tell-anyone|e", "|Eemoji/yahoo/drooling|e", "|Eemoji/yahoo/fortziki|e", "|Eemoji/yahoo/frustrated|e", "|Eemoji/yahoo/phbbbbt-or-upset|e", "|Eemoji/yahoo/beat-up|e",
-		"|Eemoji/yahoo/heart|e", "|Eemoji/yahoo/hurry-up|e", "|Eemoji/yahoo/hypnotized|e", "|Eemoji/yahoo/it-was-not-me|e", "|Eemoji/yahoo/kiss|e", "|Eemoji/yahoo/laughing|e", "|Eemoji/yahoo/liar-liar|e",
-		"|Eemoji/yahoo/love-struck|e", "|Eemoji/yahoo/nail-biting|e", "|Eemoji/yahoo/nerd|e", "|Eemoji/yahoo/not-listening|e", "|Eemoji/yahoo/not-talking|e", "|Eemoji/yahoo/not-worthy|e", "|Eemoji/yahoo/oh-go-on|e",
-		"|Eemoji/yahoo/on-the-phone|e", "|Eemoji/yahoo/party|e", "|Eemoji/yahoo/frustrated-or-sticking-tongue-out|e", "|Eemoji/yahoo/pirate|e", "|Eemoji/yahoo/praying|e", "|Eemoji/yahoo/rocking|e", "|Eemoji/yahoo/rolling-eyes|e",
-		"|Eemoji/yahoo/rolling-on-the-floor-laughing|e", "|Eemoji/yahoo/rose|e", "|Eemoji/yahoo/sad-or-frown-face|e", "|Eemoji/yahoo/shame-on-you|e", "|Eemoji/yahoo/sick|e", "|Eemoji/yahoo/whistling|e", "|Eemoji/yahoo/silly|e",
-		"|Eemoji/yahoo/sleepy|e", "|Eemoji/yahoo/smile-or-happy-face|e", "|Eemoji/yahoo/smug|e", "|Eemoji/yahoo/straight-face|e", "|Eemoji/yahoo/sunglasses-or-cool|e", "|Eemoji/yahoo/surprised|e", "|Eemoji/yahoo/talk-to-the-hand|e",
-		"|Eemoji/yahoo/thinking|e", "|Eemoji/yahoo/time-out|e", "|Eemoji/yahoo/waiting|e", "|Eemoji/yahoo/wave|e", 
+	const char icon[30][30] = { 
 		"|Eflag/en|e", "|Eflag/es|e", "|Eflag/hu|e", "|Eflag/ro|e", "|Eflag/tr|e", "|Eflag/de|e", 
 	};
 
-	//if (strContent.find("http") == std::string::npos)
-		for (int i = 0; i < 300; i++)
-			boost::algorithm::replace_all(strContent, text[i], emoji[i]);
+	for (int i = 0; i < 300; i++)
+		boost::algorithm::replace_all(szChat, text[i], icon[i]);
 	//pChatLine->Instance.SetValue(c_szChat);
-	pChatLine->Instance.SetValue(strContent.c_str());
+	pChatLine->Instance.SetValue(szChat.c_str());
 	// DEFAULT_FONT
 	pChatLine->Instance.SetTextPointer(pkDefaultFont);
 	// END_OF_DEFAULT_FONT
@@ -505,7 +487,7 @@ void CPythonChat::AppendChat(int iType, const char * c_szChat)
 		TChatSet * pChatSet = &(itor->second);
 		//pChatLine->SetColor(itor->first, GetChatColor(iType));
 
-		// Edit Mode ¸¦ ¾ïÁö·Î ³¢¿ö ¸ÂÃß±â À§ÇØ Ãß°¡
+		// Edit Mode ë¥¼ ì–µì§€ë¡œ ë¼ì›Œ ë§žì¶”ê¸° ìœ„í•´ ì¶”ê°€
 		if (BOARD_STATE_EDIT == pChatSet->m_iBoardState)
 		{
 			ArrangeShowingChat(itor->first);
@@ -543,12 +525,12 @@ DWORD CPythonChat::GetChatColor(int iType)
 void CPythonChat::IgnoreCharacter(const char * c_szName)
 {
 	TIgnoreCharacterSet::iterator itor = m_IgnoreCharacterSet.find(c_szName);
-	// NOTE : ÀÌ¹Ì Â÷´Ü ÁßÀÌ¶ó¸é..
+	// NOTE : ì´ë¯¸ ì°¨ë‹¨ ì¤‘ì´ë¼ë©´..
 	if (m_IgnoreCharacterSet.end() != itor)
 	{
 		m_IgnoreCharacterSet.erase(itor);
 	}
-	// NOTE : Â÷´ÜÀÌ µÇÁö ¾ÊÀº Ä³¸¯ÅÍ¶ó¸é..
+	// NOTE : ì°¨ë‹¨ì´ ë˜ì§€ ì•Šì€ ìºë¦­í„°ë¼ë©´..
 	else
 	{
 		m_IgnoreCharacterSet.insert(c_szName);
@@ -732,7 +714,7 @@ void CWhisper::SetBoxSize(float fWidth, float fHeight)
 		pChatLine->Instance.SetLimitWidth(fWidth);
 	}
 }
-
+//Multilanguage with Kingdom
 void CWhisper::AppendChat(int iType, const char * c_szChat)
 {
 	// DEFAULT_FONT
@@ -751,39 +733,19 @@ void CWhisper::AppendChat(int iType, const char * c_szChat)
 	}
 	// END_OF_DEFAULT_FONT
 
-	std::string message = c_szChat;
-	const char text[300][300] = { ":**", "O:)", "~X(", "=D>", ">3", "X(", ";;)",
-		";))", "\:D/", ":^>", ">:/", "=((", ":-c", ":-@",
-		":O)", ":-/", ":((", ":D", "8->", ">:)", ":o3",
-		":-<", ":-$", "=P~", "(pow)", ":-L", ">:P", ";)",
-		"<3", ":!!", "@-)", "^#(^", ":*", ":))", ":^o",
-		":X", ":-SS", ":-B", "%-(", "[-(", "^:)^", ":-j",
-		":)]", "<:-P", ":P", ":ar!", "[-o<", "\m/", "8-/",
-		"=))", "@};-", ":(", "[-x", ":-&", ":-^", "8-}",
-		"/-)", ":)", ":>", ":/", "B-)", ":O", "=;",
-		":-?", ":-t", ":-w", ":-h",
-		"language_locale/en", "language_locale/es", "language_locale/hu", "language_locale/ro", "language_locale/tur", "language_locale/de", "multispanish",
+	std::string czChat = c_szChat;
+	const char text[30][30] = { 
+		"EnTranslate", "EsTranslate", "HuTranslate", "RoTranslate", "TurTranslate", "GerTranslate", 
 	};
-	const char emoji[300][300] = { "|Eemoji/yahoo/2love|e", "|Eemoji/yahoo/angel|e", "|Eemoji/yahoo/at-wits-end|e", "|Eemoji/yahoo/applause|e", "|Eemoji/yahoo/arrow|e", "|Eemoji/yahoo/angry-or-grumpy|e", "|Eemoji/yahoo/batting-eyelashes|e",
-		"|Eemoji/yahoo/giggle-or-hee-hee|e", "|Eemoji/yahoo/dancing|e", "|Eemoji/yahoo/blushing|e", "|Eemoji/yahoo/bring-it-on|e", "|Eemoji/yahoo/broken-heart|e", "|Eemoji/yahoo/call-me|e", "|Eemoji/yahoo/chatterbox|e",
-		"|Eemoji/yahoo/clown|e", "|Eemoji/yahoo/confused|e", "|Eemoji/yahoo/crying|e", "|Eemoji/yahoo/big-grin|e", "|Eemoji/yahoo/daydreaming|e", "|Eemoji/yahoo/devil|e", "|Eemoji/yahoo/dog|e",
-		"|Eemoji/yahoo/doh!|e", "|Eemoji/yahoo/do-not-tell-anyone|e", "|Eemoji/yahoo/drooling|e", "|Eemoji/yahoo/fortziki|e", "|Eemoji/yahoo/frustrated|e", "|Eemoji/yahoo/phbbbbt-or-upset|e", "|Eemoji/yahoo/beat-up|e",
-		"|Eemoji/yahoo/heart|e", "|Eemoji/yahoo/hurry-up|e", "|Eemoji/yahoo/hypnotized|e", "|Eemoji/yahoo/it-was-not-me|e", "|Eemoji/yahoo/kiss|e", "|Eemoji/yahoo/laughing|e", "|Eemoji/yahoo/liar-liar|e",
-		"|Eemoji/yahoo/love-struck|e", "|Eemoji/yahoo/nail-biting|e", "|Eemoji/yahoo/nerd|e", "|Eemoji/yahoo/not-listening|e", "|Eemoji/yahoo/not-talking|e", "|Eemoji/yahoo/not-worthy|e", "|Eemoji/yahoo/oh-go-on|e",
-		"|Eemoji/yahoo/on-the-phone|e", "|Eemoji/yahoo/party|e", "|Eemoji/yahoo/frustrated-or-sticking-tongue-out|e", "|Eemoji/yahoo/pirate|e", "|Eemoji/yahoo/praying|e", "|Eemoji/yahoo/rocking|e", "|Eemoji/yahoo/rolling-eyes|e",
-		"|Eemoji/yahoo/rolling-on-the-floor-laughing|e", "|Eemoji/yahoo/rose|e", "|Eemoji/yahoo/sad-or-frown-face|e", "|Eemoji/yahoo/shame-on-you|e", "|Eemoji/yahoo/sick|e", "|Eemoji/yahoo/whistling|e", "|Eemoji/yahoo/silly|e",
-		"|Eemoji/yahoo/sleepy|e", "|Eemoji/yahoo/smile-or-happy-face|e", "|Eemoji/yahoo/smug|e", "|Eemoji/yahoo/straight-face|e", "|Eemoji/yahoo/sunglasses-or-cool|e", "|Eemoji/yahoo/surprised|e", "|Eemoji/yahoo/talk-to-the-hand|e",
-		"|Eemoji/yahoo/thinking|e", "|Eemoji/yahoo/time-out|e", "|Eemoji/yahoo/waiting|e", "|Eemoji/yahoo/wave|e",
-		"|Eflag/en|e", "|Eflag/es|e", "|Eflag/hu|e", "|Eflag/ro|e", "|Eflag/tr|e", "|Eflag/de|e", "|Eflag/es|e",
+	const char icon[30][30] = { 
+		"|Eflag/en|e", "|Eflag/es|e", "|Eflag/hu|e", "|Eflag/ro|e", "|Eflag/tr|e", "|Eflag/de|e", 
 	};
-
-	//if (message.find("http") == std::string::npos)
-		for (int i = 0; i < 80; i++)
-			boost::algorithm::replace_all(message, text[i], emoji[i]);
+	for (int i = 0; i < 80; i++)
+		boost::algorithm::replace_all(czChat, text[i], emoji[i]);
 
 	SChatLine * pChatLine = SChatLine::New();
 	//pChatLine->Instance.SetValue(c_szChat);
-	pChatLine->Instance.SetValue(message.c_str());
+	pChatLine->Instance.SetValue(czChat.c_str());
 	// DEFAULT_FONT
 	pChatLine->Instance.SetTextPointer(pkDefaultFont);
 	// END_OF_DEFAULT_FONT
