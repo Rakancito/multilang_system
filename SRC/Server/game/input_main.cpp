@@ -863,7 +863,7 @@ int CInputMain::Chat(LPCHARACTER ch, const char * data, size_t uiBytes)
 #ifdef ENABLE_CHAT_COLOR_SYSTEM
 	// static const char* colorbuf[] = {" |h|r[ãÑÇÞ?|cFFffa200|h", " |h|r[ÔíäÓ?|cFFff0000|h", " |h|r[ÔæäÌ?|cFFffc700|h", " |h|r[Ìíäæ]|cFF000bff|h"}; // Arab
 	static const char* colorbuf[] = {"|cFFffa200|H|h[Staff]|h|r", "|cFFff0000|H|h[Shinsoo]|h|r", "|cFFffc700|H|h[Chunjo]|h|r", "|cFF000bff|H|h[Jinno]|h|r"};
-#ifdef ENABLE_MULTILANGUAGE //Chat with Kingdom
+#ifdef ENABLE_MULTILANGUAGE //Multilanguage with Kingdom
 	static const char* LanguageBuf[] = {"EnTranslate", "EsTranslate", "HuTranslate", "RoTranslate", "TurTranslate", "GerTranslate"};
 	int len = snprintf(chatbuf, sizeof(chatbuf), "%s %s %s : %s", LanguageBuf[MINMAX(0, ch->GetLang(), 5)], (ch->IsGM()?colorbuf[0]:colorbuf[MINMAX(0, ch->GetEmpire(), 3)]), ch->GetName(), buf);
 #else
@@ -4076,5 +4076,3 @@ int CInputDead::Analyze(LPDESC d, BYTE bHeader, const char * c_pData)
 
 	return (iExtraLen);
 }
-
-
